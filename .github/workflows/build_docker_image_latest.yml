@@ -1,4 +1,4 @@
-name: build docker image master
+name: build docker image latest
 on:
   push:
     branches: 
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Source
       uses: actions/checkout@v1
     - name: Docker Login
-      run: docker login -u germey -p ${{ secrets.DOCKERHUB_LOGIN_PASSWORD }}
+      run: docker login -u jiaju -p ${{ secrets.DOCKERHUB_LOGIN_PASSWORD }}
     - name: Setup Node.js
       uses: actions/setup-node@v2.3.0
       with:
@@ -26,6 +26,6 @@ jobs:
         yarn build
     - name: Build the Docker Image
       run: |
-        docker build -t germey/gerapy:master .
+        docker build -t jiaju/gerapy-postgres-aci:latest .
     - name: Push the Docker Image
-      run: docker push germey/gerapy:master
+      run: docker push jiaju/gerapy-postgres-aci:latest

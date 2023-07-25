@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   gerapy:
-    image: germey/gerapy
+    image: jiaju/gerapy-postgres-aci
     build: .
     container_name: gerapy
     restart: always

@@ -10,7 +10,7 @@ jobs:
     - name: Checkout Source
       uses: actions/checkout@v1
     - name: Docker Login
-      run: docker login -u germey -p ${{ secrets.DOCKERHUB_LOGIN_PASSWORD }}
+      run: docker login -u jiaju -p ${{ secrets.DOCKERHUB_LOGIN_PASSWORD }}
     - name: Setup Node.js
       uses: actions/setup-node@v2.3.0
       with:
@@ -25,11 +25,11 @@ jobs:
       run: |
         tag=${GITHUB_REF:11}
         echo "Build Tag '$tag'"
-        docker build -t germey/gerapy:$tag .
-        docker push germey/gerapy:$tag
+        docker build -t jiaju/gerapy-postgres-aci:$tag .
+        docker push jiaju/gerapy-postgres-aci:$tag
         regex='^([0-9]+\.){0,2}(\*|[0-9]+)$'
         if [[ $tag =~ $regex ]]; then
           echo "Build Stable Version '$tag'"
-          docker tag germey/gerapy:$tag germey/gerapy:latest
-          docker push germey/gerapy:latest
+          docker tag jiaju/gerapy-postgres-aci:$tag jiaju/gerapy-postgres-aci:latest
+          docker push jiaju/gerapy-postgres-aci:latest
         fi

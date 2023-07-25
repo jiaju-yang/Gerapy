@@ -43,6 +43,9 @@ djangorestframework = ">=3.11.2"
 websocket = ">=0.2.1"
 pyppeteer = ">=0.0.25"
 uberegg = "^0.1.1"
+azure-identity = "^1.13.0"
+azure-keyvault-secrets = "^4.7.0"
+psycopg2-binary = "^2.9.6"
 
 [tool.poetry.dev-dependencies]
 

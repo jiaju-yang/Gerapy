@@ -10,6 +10,33 @@
 
 Distributed Crawler Management Framework Based on Scrapy, Scrapyd, Scrapyd-Client, Scrapyd-API, Django and Vue.js.
 
+## For Gerapy-Postgres-ACI
+
+This project is forked from [Gerapy](https://github.com/Gerapy/Gerapy). I added support for PostgreSQL and Azure Key Vault so that it can be deployed to Azure Container Instances without worrying about data loss.
+
+### Usage
+
+This could only be deployed to Azure Web App with storing postgres connection string in Azure Key Vault.
+
+Set two environment variables in Azure Web App:
+
+```env
+KEY_VAULT_NAME=<the key vault name using to get pg connection string from key vault secret>
+SECRET_NAME=<the secret name storing pg connection string in the key vault>
+```
+
+Gerapy will get pg connection string automatically if properly configured.
+
+### Devlopment
+
+Github workflow will build it automatically when push the code. It could also be locally built and pushed to [Docker Hub](https://hub.docker.com/repository/docker/jiaju/gerapy-postgres-aci/general) using these commands:
+
+```bash
+# At the root directory of this project
+docker compose build --no-cache
+docker push jiaju/gerapy-postgres-aci
+```
+
 ## Documentation
 
 Documentation is available online at [https://docs.gerapy.com/](https://docs.gerapy.com/) and [https://github.com/Gerapy/Docs](https://github.com/Gerapy/Docs).
